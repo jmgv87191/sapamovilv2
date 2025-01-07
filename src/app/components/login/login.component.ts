@@ -6,6 +6,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
+import { TomasService } from 'src/app/services/tomas.service';
+import { Login, ResponseLogin } from 'src/app/interfaces/tomas';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,17 +22,44 @@ import {FormsModule} from '@angular/forms';
 export class LoginComponent  implements OnInit {
   
   form: FormGroup
+  errorStatus: boolean = false;
+  errorMsj: any = "";
 
   constructor( 
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private tomasService:TomasService,
+    private router: Router
   ) { 
     this.form = this.fb.group({
       email:[ '', Validators.required ],
       password:[ '', Validators.required ],
+      device_name: ['toma1', Validators.required],
     })
+
   }
 
 
   ngOnInit() {}
+
+  login( form: Login ){
+
+      console.log(form)
+      this.tomasService.loginByEmail( form ).subscribe((data)=>{
+        console.log(data)
+        let dataResponse: ResponseLogin = data;
+
+        if (dataResponse.token) {
+          localStorage.setItem("token",dataResponse.token )
+          this.router.navigate(['dashboard'])
+        } else {
+          this.errorStatus = true;
+          this.errorMsj = "Error"
+  
+        }
+
+      })
+
+  } 
+
 
 }

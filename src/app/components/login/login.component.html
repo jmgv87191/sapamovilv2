@@ -1,7 +1,7 @@
 <div class="cont_login">
 
   <div class="cont_formulario">
-    <form  [formGroup]="form" >
+    <form  [formGroup]="form" (ngSubmit)="login(form.value)" >
   
       <mat-form-field class="example-full-width">
         <mat-label>Nombre de usuario</mat-label>
@@ -9,12 +9,14 @@
       </mat-form-field>
   
       <mat-form-field class="example-full-width">
-        <mat-label>Password</mat-label>
+        <mat-label>Passwordssss</mat-label>
         <input type="password" formControlName="password" matInput placeholder="*******" >
       </mat-form-field>
     
-      <button type="button" mat-raised-button>Aceptar</button>
+      <button  mat-raised-button>Aceptar</button>
 
+      <span> <a href=""> Olvidaste tu contraseña? </a> </span>
+      <span> Aun no tienes cuenta? <a href=""> Registrate </a> </span>
   
     </form>
   </div>
