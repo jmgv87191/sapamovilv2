@@ -7,3 +7,12 @@ export interface ResponseLogin{
     status: string;
     token: any;
 }
+
+export interface User {
+
+    "id": number,
+    "user": string,
+    "email": string
+
+
+}
