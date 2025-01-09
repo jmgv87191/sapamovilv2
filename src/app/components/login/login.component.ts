@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import { TomasService } from 'src/app/services/tomas.service';
 import { Login, ResponseLogin } from 'src/app/interfaces/tomas';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,8 @@ export class LoginComponent  implements OnInit {
   form: FormGroup
   errorStatus: boolean = false;
   errorMsj: any = "";
+  errorMessageVariable: string = '';
+  pantallaError: boolean = true;
 
   constructor( 
     private fb: FormBuilder,
@@ -31,7 +34,7 @@ export class LoginComponent  implements OnInit {
     private router: Router
   ) { 
     this.form = this.fb.group({
-      email:[ '', Validators.required ],
+      email:[ '', [Validators.required, Validators.minLength(4)] ],
       password:[ '', Validators.required ],
       device_name: ['toma1', Validators.required],
     })
@@ -42,7 +45,6 @@ export class LoginComponent  implements OnInit {
 
   login( form: Login ){
 
-      console.log(form)
       this.tomasService.loginByEmail( form ).subscribe((data)=>{
         console.log(data)
         let dataResponse: ResponseLogin = data;
@@ -56,9 +58,32 @@ export class LoginComponent  implements OnInit {
   
         }
 
-      })
+      },
+    
+      (error: HttpErrorResponse) => {
+        if (error.status === 422) {
+  
+            console.error('Usuario o contraseña incorrectos');
+            this.errorMessageVariable = 'Usuario o contraseña incorrectossas ';
+            console.log(this.errorMessageVariable)
+  
+            this.pantallaError = false
+        
+          
+        } else {
+          console.error('Usuario o contraseña incorrectos:', error.message);
+          this.errorMessageVariable = 'Ocurrió un error Usuario o contraseña. Por favor, inténtalo de nuevo más tarde.';
+        }
+      }
+    
+    
+    
+    )
 
   } 
-
+  
+  ocultar() {
+    this.pantallaError = true
+  }
 
 }
