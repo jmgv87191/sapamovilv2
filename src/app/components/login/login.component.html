@@ -19,13 +19,13 @@
         </mat-form-field>
   
         @if (  form.controls['email'].getError('required') && form.controls['email'].touched ) {
-          <span class="form-text text-danger">
+          <span class="form-text">
             Nombre de usuario requerido
         </span>     
         }
   
         @if (  form.controls['email'].getError('minlength')  && form.controls['email'].touched) {
-          <span class="form-text text-danger">
+          <span class="form-text ">
             Este campo requiere minimo 4 letras
         </span>     
         } 
@@ -35,18 +35,24 @@
           <input type="password" formControlName="password" matInput placeholder="*******" >
         </mat-form-field>
   
-        @if (form.controls['password'].getError('required')) {
-          <span class="form-text text-danger">
+        @if (form.controls['password'].getError('required') && form.controls['password'].touched) {
+          <span class="form-text">
             Password requerido
         </span>     
         }
       
         <button [disabled]="form.invalid"  mat-raised-button>Aceptar</button>
   
-        <span> <a href=""> Olvidaste tu contraseña? </a> </span>
-        <span> Aun no tienes cuenta? <a href=""> Registrate </a> </span>
-    
+        
       </form>
+
+      <div class="cont_footer">
+        <a href="https://portalweb.sapalapaz.gob.mx/forgot-password" >Olvidaste tu Contraseña?</a>
+
+        <p> <ion-icon name="person-add-outline"></ion-icon> Aun no tienes cuenta? 
+          <a href="https://portalweb.sapalapaz.gob.mx/register"><strong>Registrate</strong></a>
+        </p>      </div>
+
     </div>
   
   
@@ -56,12 +62,12 @@
   <div class="popup " >
 
     <div class="card" >
-      <div class="card-header"  >
+      <div class="card-header "  >
         <h3 class="text-center" >
           Usuario o contraseña incorrectos
         </h3>
       </div>
-      <button style="border: none; border-radius: 0 0 5px 5px; " class="btn boton" (click)="ocultar()" >Aceptar</button>
+      <button style="border: none; border-radius: 0 0 5px 5px; color: rgb(197, 197, 197); " class="btn boton" (click)="ocultar()" >Aceptar</button>
     </div>
   </div>
   <img style="z-index: -1;" class="imagen" src="assets/FOTO.jpg">

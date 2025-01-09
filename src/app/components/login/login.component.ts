@@ -10,13 +10,15 @@ import { TomasService } from 'src/app/services/tomas.service';
 import { Login, ResponseLogin } from 'src/app/interfaces/tomas';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { IonicModule } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   imports: [MatButtonModule, MatDividerModule, MatIconModule, ReactiveFormsModule,
-    FormsModule, MatFormFieldModule, MatInputModule
+    FormsModule, MatFormFieldModule, MatInputModule, IonicModule, CommonModule
   ],
 
 })

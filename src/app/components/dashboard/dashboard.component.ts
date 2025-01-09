@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,9 +11,14 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 })
 export class DashboardComponent  implements OnInit {
 
-  constructor() { }
+  constructor( private router: Router ) { }
 
   ngOnInit() {
+  }
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['login'])
   }
 
 }
