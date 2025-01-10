@@ -16,3 +16,10 @@ export interface User {
 
 
 }
+
+export interface Tomas{
+    id:         number;
+    user_id:    number;
+    cveusu:     string;
+    alias:      string;
+}
