@@ -29,6 +29,7 @@ export class LoginComponent  implements OnInit {
   errorMsj: any = "";
   errorMessageVariable: string = '';
   pantallaError: boolean = true;
+  verPassword: boolean = false;
 
   constructor( 
     private fb: FormBuilder,
@@ -86,6 +87,10 @@ export class LoginComponent  implements OnInit {
   
   ocultar() {
     this.pantallaError = true
+  }
+
+  cambiar(){
+    this.verPassword = !this.verPassword
   }
 
 }

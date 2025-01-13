@@ -127,3 +127,25 @@ a{
     color: red;
     margin-top: -10px;
 }
+
+.cont_password{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}   
+
+.cont_input{
+    height: 60px;
+    width: 80%;
+}
+
+.cont_verPassword{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0e2ec;
+    padding: 10px;
+}

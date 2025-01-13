@@ -5,18 +5,30 @@ import { TomasService } from 'src/app/services/tomas.service';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { Tomas } from 'src/app/interfaces/tomas';
+import {
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonMenu,
+  IonMenuButton,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/angular/standalone';
+
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  imports: [MatSidenavModule, MatTableModule, MatPaginatorModule],
+  imports: [MatSidenavModule, MatTableModule, MatPaginatorModule,IonButtons, IonContent, 
+    IonHeader, IonMenu, IonMenuButton, IonTitle, IonToolbar],
 
 })
 export class DashboardComponent  implements OnInit {
 
-  displayedColumns: string[] = ['Clave de usuario','Alias'];
+  displayedColumns: string[] = ['Clave de usuario','Alias','verMas'];
   dataSource = new MatTableDataSource<Tomas>();
+  tomasRegistradas!: Tomas[]; 
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -35,7 +47,8 @@ export class DashboardComponent  implements OnInit {
 
   getProducts(){
     this.tomasService.getTomas().subscribe((data)=>{
-      console.log(data)
+      this.tomasRegistradas = data
+      this.dataSource.data = this.tomasRegistradas;
     })
   }
 
@@ -48,6 +61,13 @@ export class DashboardComponent  implements OnInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  delete(id:number){
+    console.log(id)
+    this.tomasService.deleteToma( id ).subscribe((data)=>{
+      console.log('usuario eliminado')
+    })
   }
 
 }

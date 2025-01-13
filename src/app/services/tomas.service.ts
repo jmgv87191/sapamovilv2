@@ -47,5 +47,22 @@ export class TomasService {
 
   }
 
+  deleteToma( id:number ):Observable<void>{
+
+    let token = localStorage.getItem('token')
+
+    const options ={
+      method:'GET',
+      headers:{
+        Authorization:  `Beared${token}`
+      }
+    }
+
+
+    
+
+    return this.http.delete<void>( ((this.appUrl + this.apiUrl)+"/"+ id  ), options  )
+  }
+
 
 }
