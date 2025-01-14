@@ -23,3 +23,9 @@ export interface Tomas{
     cveusu:     string;
     alias:      string;
 }
+
+export interface AgregarToma{
+    id?: number;
+    cveusu: string;
+    alias: string;
+}

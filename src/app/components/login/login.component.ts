@@ -37,8 +37,8 @@ export class LoginComponent  implements OnInit {
     private router: Router
   ) { 
     this.form = this.fb.group({
-      email:[ 'jmgv87191@gmail.com', [Validators.required, Validators.minLength(4)] ],
-      password:[ 'jmsa424s', Validators.required ],
+      email:[ '', [Validators.required, Validators.minLength(4)] ],
+      password:[ '', Validators.required ],
       device_name: ['toma1', Validators.required],
     })
 
@@ -55,10 +55,10 @@ export class LoginComponent  implements OnInit {
         if (dataResponse.token) {
           localStorage.setItem("token",dataResponse.token )
           this.router.navigate(['dashboard'])
+          this.form.reset()
         } else {
           this.errorStatus = true;
           this.errorMsj = "Error"
-  
         }
 
       },

@@ -1,0 +1,38 @@
+
+<div class="header">
+  <button routerLink="/dashboard" mat-button>Regresar</button>
+</div>
+
+<div class="cont_agregarToma">
+  
+  <mat-card class="example-card" appearance="outlined">
+
+    <mat-card-header class="agregarToma_header" >
+      <mat-card-title>Agregar toma</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content  >
+
+      <form class="example-form" [formGroup]="form" (ngSubmit)="agregarUsuario( form.value)" >
+        
+        <mat-form-field class="example-full-width">
+          <mat-label>Clave de usuario</mat-label>
+          <input formControlName="cveusu" type="number" matInput placeholder="11111111" >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Alias</mat-label>
+          <input formControlName="alias"  matInput placeholder="OOMSAPAS" >
+        </mat-form-field>
+      
+        <mat-card-actions style="display: flex; justify-content: center;" >
+          <button mat-button>Agregar</button>
+        </mat-card-actions>
+      </form>
+      
+    </mat-card-content>
+
+  </mat-card>
+
+</div>
+

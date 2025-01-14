@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Login, ResponseLogin, Tomas } from '../interfaces/tomas';
+import { AgregarToma, Login, ResponseLogin, Tomas } from '../interfaces/tomas';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -57,8 +57,20 @@ export class TomasService {
     return this.http.delete<void>( ((this.appUrl + this.apiUrl)+"/"+ id  ), options  )
   }
 
+  agregarUsuario( form: AgregarToma  ):Observable<void>{
 
+    let token = localStorage.getItem('token')
 
+    const options = {
+      method:'GET',
+      headers:{
+        Authorization:`Bearer ${token}`
+      }
+    }
 
+    return this.http.post<void> ((this.appUrl + this.apiUrl), form, options ) 
 
+  }
 }
+
+
