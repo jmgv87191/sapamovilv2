@@ -8,8 +8,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TomasService {
 
-
-
   private url: string;
   private appUrl: string;
   private apiUrl : string;
@@ -22,8 +20,6 @@ export class TomasService {
     this.apiUrl = 'api/tomas';
 
   }
-
-
 
   loginByEmail(form:Login):Observable<ResponseLogin>{
 
@@ -54,15 +50,15 @@ export class TomasService {
     const options ={
       method:'GET',
       headers:{
-        Authorization:  `Beared${token}`
+        Authorization:  `Bearer ${token}`
       }
     }
 
-
-    
-
     return this.http.delete<void>( ((this.appUrl + this.apiUrl)+"/"+ id  ), options  )
   }
+
+
+
 
 
 }

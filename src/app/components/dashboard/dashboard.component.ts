@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { TomasService } from 'src/app/services/tomas.service';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
@@ -13,7 +13,12 @@ import {
   IonMenuButton,
   IonTitle,
   IonToolbar,
+  IonFooter,
 } from '@ionic/angular/standalone';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+
 
 
 @Component({
@@ -21,7 +26,9 @@ import {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   imports: [MatSidenavModule, MatTableModule, MatPaginatorModule,IonButtons, IonContent, 
-    IonHeader, IonMenu, IonMenuButton, IonTitle, IonToolbar],
+    IonHeader, IonMenu, IonMenuButton, IonTitle, IonToolbar, IonFooter,MatButtonModule, MatDividerModule, MatIconModule,
+    RouterLink
+  ],
 
 })
 export class DashboardComponent  implements OnInit {

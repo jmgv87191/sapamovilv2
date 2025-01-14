@@ -3,6 +3,7 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { authGuard } from './components/guards/auth.guard';
 import { auth2Guard } from './components/guards/auth2.guard';
+import { AgregarTomasComponent } from './components/agregar-tomas/agregar-tomas.component';
 
 export const routes: Routes = [
   {
@@ -19,6 +20,12 @@ export const routes: Routes = [
     path:'dashboard',
     component: DashboardComponent,
     canActivate: [authGuard]
+  },
+  {
+    path:'agregarToma',
+    component: AgregarTomasComponent,
+    canActivate: [authGuard]
+
   },
   {
     path: '',
