@@ -4,7 +4,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { TomasService } from 'src/app/services/tomas.service';
 import { AgregarToma } from 'src/app/interfaces/tomas';
 
@@ -24,7 +24,8 @@ export class AgregarTomasComponent  implements OnInit {
 
   constructor(  
     private fb: FormBuilder,
-    private tomasService:TomasService
+    private tomasService:TomasService,
+    private router:Router
   ) {
 
     this.form = this.fb.group({
@@ -47,6 +48,7 @@ export class AgregarTomasComponent  implements OnInit {
     console.log('toma',toma)
     this.tomasService.agregarUsuario( toma ).subscribe(()=>{
       console.log('agregado')
+      this.router.navigate(['dashboard'])
     })
     
   }

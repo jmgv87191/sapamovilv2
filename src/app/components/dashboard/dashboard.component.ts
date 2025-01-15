@@ -44,7 +44,10 @@ export class DashboardComponent  implements OnInit {
   constructor( 
     private router: Router,
     private tomasService: TomasService
-  ) { }
+  ) { 
+    this.getProducts()
+
+  }
 
   ngOnInit() {
 
@@ -73,14 +76,14 @@ export class DashboardComponent  implements OnInit {
   delete(id:number){
     console.log(id)
     this.tomasService.deleteToma( id ).subscribe((data)=>{
-      console.log('usuario eliminado')
+
+      this.getProducts()
+
     })
   }
 
   verMas( claveUsuario:number ){
-    console.log(claveUsuario)
     this.tomasService.getMasTomas(claveUsuario).subscribe((data)=>{
-      console.log(data)
     })
   }
 
