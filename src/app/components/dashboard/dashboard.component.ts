@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { Router, RouterLink } from '@angular/router';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { TomasService } from 'src/app/services/tomas.service';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
@@ -19,6 +19,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { IonItem, IonLabel, IonSpinner } from '@ionic/angular/standalone';
+import { filter } from 'rxjs/operators';
 
 
 
@@ -47,9 +48,11 @@ export class DashboardComponent  implements OnInit {
     private router: Router,
     private tomasService: TomasService
   ) { 
-    this.getProducts()
-
-  }
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        this.getProducts();
+      });  }
 
   ngOnInit() {
 

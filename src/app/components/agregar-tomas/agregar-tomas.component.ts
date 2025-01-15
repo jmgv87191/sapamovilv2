@@ -7,13 +7,14 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import { Router, RouterLink } from '@angular/router';
 import { TomasService } from 'src/app/services/tomas.service';
 import { AgregarToma } from 'src/app/interfaces/tomas';
+import { IonItem, IonLabel, IonSpinner } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-agregar-tomas',
   templateUrl: './agregar-tomas.component.html',
   styleUrls: ['./agregar-tomas.component.scss'],
   imports: [MatCardModule, MatButtonModule, FormsModule, MatFormFieldModule, MatInputModule,
-    RouterLink, ReactiveFormsModule
+    RouterLink, ReactiveFormsModule, IonItem, IonLabel, IonSpinner
 
   ],
 
@@ -21,6 +22,7 @@ import { AgregarToma } from 'src/app/interfaces/tomas';
 export class AgregarTomasComponent  implements OnInit {
   
   form:FormGroup;
+  loader: boolean = false;
 
   constructor(  
     private fb: FormBuilder,
@@ -44,10 +46,12 @@ export class AgregarTomasComponent  implements OnInit {
       alias: this.form.value.alias
     }
 
+    this.loader = true;
 
     console.log('toma',toma)
     this.tomasService.agregarUsuario( toma ).subscribe(()=>{
       console.log('agregado')
+      this.loader = false;
       this.router.navigate(['dashboard'])
     })
     

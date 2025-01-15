@@ -19,3 +19,12 @@
     flex-direction: column;
     padding: 20% 5%;
 }
+
+.cont_loader{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(222, 230, 217);
+}
