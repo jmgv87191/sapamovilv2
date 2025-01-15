@@ -77,5 +77,12 @@ export class DashboardComponent  implements OnInit {
     })
   }
 
+  verMas( claveUsuario:number ){
+    console.log(claveUsuario)
+    this.tomasService.getMasTomas(claveUsuario).subscribe((data)=>{
+      console.log(data)
+    })
+  }
+
 }
 

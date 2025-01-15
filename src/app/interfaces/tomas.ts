@@ -14,7 +14,6 @@ export interface User {
     "user": string,
     "email": string
 
-
 }
 
 export interface Tomas{
@@ -28,4 +27,15 @@ export interface AgregarToma{
     id?: number;
     cveusu: string;
     alias: string;
+}
+
+export interface VerMas{
+    id?: number;
+    alias: string;
+    cveusu: string;
+    direccion: string;
+    estatusContrato: string;
+    mesesAdeudo: string;
+    saldo:number;
+    nombre: string;
 }

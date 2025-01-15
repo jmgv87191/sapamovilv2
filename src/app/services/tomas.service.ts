@@ -71,6 +71,40 @@ export class TomasService {
     return this.http.post<void> ((this.appUrl + this.apiUrl), form, options ) 
 
   }
+
+  verMas( claveUsuario:number ):Observable<any>{
+
+    let token = localStorage.getItem('token')
+
+    const options = {
+      method: 'GET',
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    }    
+
+    return this.http.get< any[] >( (this.appUrl + this.apiUrl + '/' + claveUsuario), options );
+
+
+  }
+
+
+  getMasTomas( id:number ):Observable< any >{
+
+    let miStorage = window.localStorage['token'];
+
+    const options = {
+      method: 'GET',
+      headers:{
+        Authorization: `Bearer ${miStorage}`
+      }
+    }
+
+    return this.http.get< any[] >( (this.appUrl + this.apiUrl + '/' + id), options );
+  }
+
+
+
 }
 
 
