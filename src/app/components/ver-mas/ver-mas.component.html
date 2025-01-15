@@ -1,45 +1,56 @@
-
 <div class="header">
   <button routerLink="" mat-button>Regresar</button>
 </div>
 
-<div class="cont_agregarToma">
+@if ( loader ) {
+
+  <div class="cont_loader">
+    <ion-spinner name="circles" style="width: 100px; height: 100px;" color="success"></ion-spinner>
+  </div>
+
+}@else {
   
-  <mat-card class="example-card" appearance="outlined">
-
-    <mat-card-header class="agregarToma_header" >
-      <mat-card-title> {{ masDatos.alias }} </mat-card-title>
-    </mat-card-header>
-
-    <mat-card-content  >
-
-  <ion-list [inset]="true">
-    <ion-item>
-      <ion-label class="texto" >Nombre: <span class="texto_span" > {{ masDatos.nombre }} </span> </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label class="texto">Direccion: <span class="texto_span" > {{ masDatos.direccion }} </span>  </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label class="texto">Clave de usuario: <span class="texto_span" > {{ masDatos.cveusu }} </span>  </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label class="texto">Estatus: <span class="texto_span" > {{ masDatos.estatusContrato }} </span>  </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label class="texto">Adeudo: <span class="texto_span" > {{ masDatos.mesesAdeudo }} </span>  </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label class="texto">Saldo: <span class="texto_span" > {{ masDatos.saldo }} </span>  </ion-label>
-    </ion-item>
-  </ion-list>
-
-      
-    </mat-card-content>
-
+  <div class="cont_agregarToma">
+    
+    <mat-card class="example-card" appearance="outlined">
   
+      <mat-card-header class="agregarToma_header" >
+        <mat-card-title> {{ masDatos.alias }} </mat-card-title>
+      </mat-card-header>
+  
+      <mat-card-content  >
+  
+    <ion-list [inset]="true">
+      <ion-item>
+        <ion-label class="texto" >Nombre: <span class="texto_span" > {{ masDatos.nombre }} </span> </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="texto">Direccion: <span class="texto_span" > {{ masDatos.direccion }} </span>  </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="texto">Clave de usuario: <span class="texto_span" > {{ masDatos.cveusu }} </span>  </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="texto">Estatus: <span class="texto_span" > {{ masDatos.estatusContrato }} </span>  </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="texto">Adeudo: <span class="texto_span" > {{ masDatos.mesesAdeudo }} </span>  </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="texto">Saldo: <span class="texto_span" > {{ masDatos.saldo }} </span>  </ion-label>
+      </ion-item>
+    </ion-list>
+  
+        
+      </mat-card-content>
+  
+    
+  
+    </mat-card>
+  
+  </div>
 
-  </mat-card>
+}
 
-</div>
+
 

@@ -18,6 +18,7 @@ import {
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
+import { IonItem, IonLabel, IonSpinner } from '@ionic/angular/standalone';
 
 
 
@@ -27,7 +28,7 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrls: ['./dashboard.component.scss'],
   imports: [MatSidenavModule, MatTableModule, MatPaginatorModule,IonButtons, IonContent, 
     IonHeader, IonMenu, IonMenuButton, IonTitle, IonToolbar, IonFooter,MatButtonModule, MatDividerModule, MatIconModule,
-    RouterLink
+    RouterLink, IonItem, IonLabel, IonSpinner
   ],
 
 })
@@ -36,6 +37,7 @@ export class DashboardComponent  implements OnInit {
   displayedColumns: string[] = ['Clave de usuario','Alias','verMas'];
   dataSource = new MatTableDataSource<Tomas>();
   tomasRegistradas!: Tomas[]; 
+  loader: boolean = true;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -56,9 +58,13 @@ export class DashboardComponent  implements OnInit {
   }
 
   getProducts(){
+
+    this.loader = true
+
     this.tomasService.getTomas().subscribe((data)=>{
       this.tomasRegistradas = data
       this.dataSource.data = this.tomasRegistradas;
+      this.loader = false
     })
   }
 

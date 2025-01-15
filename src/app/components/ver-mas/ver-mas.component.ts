@@ -5,13 +5,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { VerMas } from 'src/app/interfaces/tomas';
 import {MatListModule} from '@angular/material/list';
-import { IonContent, IonItem, IonLabel, IonList } from '@ionic/angular/standalone';
+import { IonItem, IonLabel, IonList, IonSpinner } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-ver-mas',
   templateUrl: './ver-mas.component.html',
   styleUrls: ['./ver-mas.component.scss'],
-  imports: [MatCardModule, MatButtonModule, MatListModule, RouterLink, IonItem, IonLabel, IonList],
+  imports: [MatCardModule, MatButtonModule, MatListModule, RouterLink, IonItem, IonLabel, IonList, IonSpinner],
 
 })
 export class VerMasComponent  implements OnInit {
@@ -27,6 +27,9 @@ export class VerMasComponent  implements OnInit {
     saldo: 0,
     nombre: '',
   };
+  loader: boolean = false;
+
+
   constructor(
     private aRoute: ActivatedRoute,
     private tomasService: TomasService
@@ -38,8 +41,8 @@ export class VerMasComponent  implements OnInit {
 
   ngOnInit() {
     console.log( this.aRoute.snapshot.paramMap.get('id') )
+    this.loader = true
     this.tomasService.getMasTomas( this.idToma ).subscribe((data)=>{
-      console.log(data)
 
       this.masDatos = {
         alias: data.toma.alias,
@@ -50,9 +53,8 @@ export class VerMasComponent  implements OnInit {
         saldo: data.usuario.saldo,
         nombre: data.usuario.nombre
       }
-      console.log(this.masDatos)
 
-
+      this.loader = false
     })
   }
 
