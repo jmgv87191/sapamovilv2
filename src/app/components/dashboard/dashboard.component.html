@@ -1,14 +1,15 @@
-<ion-menu contentId="main-content">
-  <ion-header >
+<ion-menu contentId="main-content" >
+  <ion-header  >
     <h4 class="clase_menu" > 
       <img class="logo-sapa-menu" style="width: 50px; margin-right: 20px;" src="../../assets/logo_blanco.png" alt="">  
       MENU
     </h4>
 </ion-header>
-<ion-content class="ion-padding"  >
-  <div class="container_aside" >
 
-    <ion-list>
+<ion-content class="ion-padding"   >
+  <div class="container_aside"  >
+
+    <ion-list >
 
       <ion-item>
         <ion-icon class="icon" name="navigate-circle-outline"></ion-icon>
@@ -49,19 +50,20 @@
     </ion-toolbar>
   </ion-footer>
 
-</ion-content></ion-menu>
+</ion-content>
+</ion-menu>
 
-<div class="ion-page" id="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
+<div class="ion-page" id="main-content" >
+  <ion-header >
+    <ion-toolbar  >
+      <ion-buttons slot="start" >
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title>
+      <ion-title style="background-color: #00846a; z-index: -1; color: rgb(224, 224, 224);" >
         OOMSAPAS
       </ion-title>
-      <div class="exit" slot="end" style="margin-right: 10%;" (click)="logout()" >
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+      <div class="exit" slot="end" style="margin-right: 10%;" (click)="logout()"  >
+        <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
           <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
         </svg>
