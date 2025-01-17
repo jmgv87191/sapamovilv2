@@ -5,6 +5,10 @@ import { authGuard } from './components/guards/auth.guard';
 import { auth2Guard } from './components/guards/auth2.guard';
 import { AgregarTomasComponent } from './components/agregar-tomas/agregar-tomas.component';
 import { VerMasComponent } from './components/ver-mas/ver-mas.component';
+import { RecaudacionComponent } from './compoents/recaudacion/recaudacion.component';
+import { PagosComponent } from './compoents/pagos/pagos.component';
+import { TandeoComponent } from './compoents/tandeo/tandeo.component';
+import { QuejasFugasComponent } from './compoents/quejas-fugas/quejas-fugas.component';
 
 export const routes: Routes = [
   {
@@ -31,6 +35,22 @@ export const routes: Routes = [
     path:'verMas/:id',
     component: VerMasComponent,
     canActivate: [authGuard]
+  },
+  {
+    path:'recaudacion',
+    component: RecaudacionComponent
+  },
+  {
+    path:'pagos',
+    component: PagosComponent
+  },
+  {
+    path:'tandeo',
+    component: TandeoComponent
+  },
+  {
+    path:'quejas-fugas',
+    component: QuejasFugasComponent
   },
   {
     path: '',

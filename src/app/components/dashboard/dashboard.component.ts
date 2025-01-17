@@ -14,6 +14,9 @@ import {
   IonTitle,
   IonToolbar,
   IonFooter,
+  IonList,
+  IonIcon,
+  IonInput
 } from '@ionic/angular/standalone';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
@@ -29,7 +32,7 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./dashboard.component.scss'],
   imports: [MatSidenavModule, MatTableModule, MatPaginatorModule,IonButtons, IonContent, 
     IonHeader, IonMenu, IonMenuButton, IonTitle, IonToolbar, IonFooter,MatButtonModule, MatDividerModule, MatIconModule,
-    RouterLink, IonItem, IonLabel, IonSpinner
+    RouterLink, IonItem, IonLabel, IonSpinner, IonList, IonIcon, IonInput
   ],
 
 })
@@ -96,5 +99,20 @@ export class DashboardComponent  implements OnInit {
     })
   }
 
+  onClick1(){
+    this.router.navigate(['recaudacion'])
+  }
+
+  onClick2(){
+    this.router.navigate(['pagos'])
+  }
+
+  onClick3(){
+    this.router.navigate(['tandeo'])
+  }
+
+  onClick4(){
+    this.router.navigate(['quejas-fugas'])
+  }
 }
 

@@ -1,11 +1,55 @@
 <ion-menu contentId="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu Content</ion-title>
+  <ion-header >
+    <h4 class="clase_menu" > 
+      <img class="logo-sapa-menu" style="width: 50px; margin-right: 20px;" src="../../assets/logo_blanco.png" alt="">  
+      MENU
+    </h4>
+</ion-header>
+<ion-content class="ion-padding"  >
+  <div class="container_aside" >
+
+    <ion-list>
+
+      <ion-item>
+        <ion-icon class="icon" name="navigate-circle-outline"></ion-icon>
+        <ion-input label="Recaudacion" (click)="onClick1()" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon class="icon" name="wallet-outline"></ion-icon>
+        <ion-input label="Pagar en linea" (click)="onClick2()"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon class="icon" name="calendar-number-outline"></ion-icon>
+        <ion-input label="Tandeo" (click)="onClick3()"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon class="icon" name="call-outline"></ion-icon>
+        <ion-input label="Quejas y fugas" (click)="onClick4()"></ion-input>
+      </ion-item>
+
+    
+
+    </ion-list>
+  </div>
+
+  <ion-footer class="home__footer" >
+    <ion-toolbar class="toolbar">
+      <a href="https://www.facebook.com/sapalapaz/?locale=es_LA"> 
+      <div style="gap: 10px;" class="contFace">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="27px" viewBox="0 0 512 512"> <path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"/></svg>
+          
+  
+          Sapa
+          
+        </div>
+      </a>
     </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">This is the menu content.</ion-content>
-</ion-menu>
+  </ion-footer>
+
+</ion-content></ion-menu>
 
 <div class="ion-page" id="main-content">
   <ion-header>
@@ -30,6 +74,7 @@
       <ion-spinner name="circles" style="width: 80px; height: 80px;" color="success"></ion-spinner>
     </div>
   }@else {
+
     <ion-content class="ion-padding"> 
   
       <div class="mat-elevation-z8">
