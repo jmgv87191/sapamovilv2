@@ -10,6 +10,7 @@ svg{
     margin: 0 auto;
     width: 100%;
     margin-top: 20px;
+    padding-bottom: 20px;
 }
 
 .cont_loader{
@@ -71,5 +72,9 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+ion-menu-button {
+    --color: #d8d8d8; 
 }
 
