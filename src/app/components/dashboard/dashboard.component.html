@@ -1,4 +1,4 @@
-<ion-menu contentId="main-content" >
+<ion-menu contentId="main-content"  >
   <ion-header  >
     <h4 class="clase_menu" > 
       <img class="logo-sapa-menu" style="width: 50px; margin-right: 20px;" src="../../assets/logo_blanco.png" alt="">  
@@ -53,13 +53,13 @@
 </ion-content>
 </ion-menu>
 
-<div class="ion-page" id="main-content" >
-  <ion-header >
-    <ion-toolbar  >
+<div class="ion-page" id="main-content"  >
+  <ion-header  >
+    <ion-toolbar  class="header" >
       <ion-buttons slot="start" >
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title style="background-color: #00846a; z-index: -1; color: rgb(224, 224, 224);" >
+      <ion-title style="z-index: -1; color: rgb(224, 224, 224);" >
         OOMSAPAS
       </ion-title>
       <div class="exit" slot="end" style="margin-right: 10%;" (click)="logout()"  >
@@ -126,7 +126,7 @@
     <ion-toolbar >
   
       <div class="cont_footer">
-        <button routerLink="/agregarToma" mat-stroked-button>Agregar toma</button>
+        <button routerLink="/agregarToma" mat-raised-button>Agregar toma</button>
       </div>
   
     </ion-toolbar>

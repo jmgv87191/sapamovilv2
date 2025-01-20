@@ -5,10 +5,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { VerMas } from 'src/app/interfaces/tomas';
 import {MatListModule} from '@angular/material/list';
-import { IonItem, IonLabel, IonList, IonSpinner,IonHeader, IonToolbar, IonButtons,
-  IonMenuButton, IonTitle, IonFooter
+import { IonItem, IonLabel, IonList, IonSpinner,IonHeader, IonToolbar, IonButtons, IonTitle, IonFooter
 } from '@ionic/angular/standalone';
-import { Directory, Encoding, Filesystem } from '@capacitor/filesystem';
+import { Directory, Filesystem } from '@capacitor/filesystem';
 import { NotificationService } from '../../services/notification.service';
 
 @Component({

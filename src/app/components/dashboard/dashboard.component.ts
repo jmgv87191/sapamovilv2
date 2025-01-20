@@ -32,7 +32,7 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./dashboard.component.scss'],
   imports: [MatSidenavModule, MatTableModule, MatPaginatorModule,IonButtons, IonContent, 
     IonHeader, IonMenu, IonMenuButton, IonTitle, IonToolbar, IonFooter,MatButtonModule, MatDividerModule, MatIconModule,
-    RouterLink, IonItem, IonLabel, IonSpinner, IonList, IonIcon, IonInput
+    RouterLink, IonItem, IonSpinner, IonList, IonIcon, IonInput
   ],
 
 })
