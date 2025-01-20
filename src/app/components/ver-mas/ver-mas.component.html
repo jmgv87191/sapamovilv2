@@ -1,14 +1,19 @@
-<ion-header >
-  <ion-toolbar  >
+<ion-header  >
+  <ion-toolbar  class="header" style="text-align: center;" >
     <ion-buttons slot="start" >
-
       <svg (click)="regresar()" style="margin-left: 20px;"  width="20px" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" ><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
 
-
     </ion-buttons>
-    <ion-title style="background-color: #00846a; z-index: -1; color: rgb(224, 224, 224);" >
+    <ion-title style="z-index: -1; color: rgb(224, 224, 224);" >
       OOMSAPAS
     </ion-title>
+
+    <div class="exit" slot="end" style="margin-right: 5%;"  >
+      <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="transparent" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
+        <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+      </svg>
+    </div>
 
   </ion-toolbar>
 </ion-header>
@@ -21,9 +26,9 @@
 
 }@else {
   
-  <div class="cont_agregarToma">
+  <div class="cont_agregarToma" style="overflow: auto;" >
     
-    <mat-card class="example-card" appearance="outlined">
+    <mat-card  class="example-card" appearance="outlined">
   
       <mat-card-header class="agregarToma_header" >
         <mat-card-title> {{ masDatos.alias }} </mat-card-title>
@@ -59,16 +64,23 @@
   
     </mat-card>
 
-    <div class="text-center"  >
-      <h3>Recibos</h3>
+    <div>
+      <h3  style="text-align: center;" >Recibos</h3>
     </div>
     
 
-    <div class="cont_meses">
+    <div class="cont_meses" style="gap: 10px; padding: 10px; overflow: auto;">
         @for (item of meses ; track $index) {
           <div class="cont_meses_btn" >
-            <button  (click)="downloadRecibo( masDatos.cveusu, item.valor)" class="btn_meses"  type="button"> {{ item.mes }} </button>
-          </div>
+            <button  (click)="downloadRecibo( masDatos.cveusu, item.valor)" 
+        class="btn_meses"  type="button" style="padding: 10px;">  {{ item.mes }} </button>
+          </div> 
+
+          <button  (click)="downloadRecibo( masDatos.cveusu, item.valor)"  mat-fab extended>
+            {{ item.mes }}
+          </button>
+
+
         }
 
     </div>

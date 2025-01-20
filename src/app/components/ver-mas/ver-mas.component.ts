@@ -9,6 +9,7 @@ import { IonItem, IonLabel, IonList, IonSpinner,IonHeader, IonToolbar, IonButton
 } from '@ionic/angular/standalone';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { NotificationService } from '../../services/notification.service';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-ver-mas',
@@ -16,7 +17,7 @@ import { NotificationService } from '../../services/notification.service';
   styleUrls: ['./ver-mas.component.scss'],
   imports: [MatCardModule, MatButtonModule, MatListModule,  IonItem, IonLabel, 
     IonList, IonSpinner, IonHeader, IonToolbar, IonButtons,  IonTitle,
-    IonFooter
+    IonFooter, MatIconModule
   ],
 
 })
