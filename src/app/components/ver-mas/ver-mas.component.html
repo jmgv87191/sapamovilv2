@@ -88,12 +88,24 @@
   </div>
 
   <ion-footer>
-    <ion-toolbar style="padding: 10px 0;">
-      <ion-title >
-        <button mat-raised-button>Pagar</button>
+    <ion-toolbar>
+      <ion-title 
+        style="
+          display: flex; 
+          justify-content: center; 
+          align-items: center; 
+          height: 100%;"
+      >
+        <button 
+          mat-raised-button 
+          (click)="pagar()"
+        >
+          Pagar
+        </button>
       </ion-title>
     </ion-toolbar>
   </ion-footer>
+  
   
   
   

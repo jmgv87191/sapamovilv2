@@ -118,4 +118,7 @@ export class VerMasComponent  implements OnInit {
     return months;
   }
 
+  pagar() {
+    window.location.href =  `https://portalweb.sapalapaz.gob.mx/sapapol/${this.masDatos.cveusu}` ;
+  }
 }
