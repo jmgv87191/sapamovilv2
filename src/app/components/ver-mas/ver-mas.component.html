@@ -58,9 +58,33 @@
     
   
     </mat-card>
-  
+
+    <div class="text-center"  >
+      <h3>Recibos</h3>
+    </div>
+    
+
+    <div class="cont_meses">
+        @for (item of meses ; track $index) {
+          <div class="cont_meses_btn" >
+            <button  (click)="downloadRecibo( masDatos.cveusu, item.valor)" class="btn_meses"  type="button"> {{ item.mes }} </button>
+          </div>
+        }
+
+    </div>
+    
   </div>
 
+  <ion-footer>
+    <ion-toolbar style="padding: 10px 0;">
+      <ion-title >
+        <button mat-raised-button>Pagar</button>
+      </ion-title>
+    </ion-toolbar>
+  </ion-footer>
+  
+  
+  
 }
 
 

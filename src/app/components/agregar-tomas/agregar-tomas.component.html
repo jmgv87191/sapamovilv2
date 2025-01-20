@@ -1,9 +1,17 @@
+<ion-header >
+  <ion-toolbar  >
+    <ion-buttons slot="start" >
+
+      <svg (click)="regresar()" style="margin-left: 20px;"  width="20px" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" ><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
 
 
+    </ion-buttons>
+    <ion-title style="background-color: #00846a; z-index: -1; color: rgb(224, 224, 224);" >
+      OOMSAPAS
+    </ion-title>
 
-<div class="header">
-  <button routerLink="/dashboard" mat-button>Regresar</button>
-</div>
+  </ion-toolbar>
+</ion-header>
 
 @if (loader) {
   <div class="cont_loader">
@@ -33,7 +41,7 @@
           </mat-form-field>
         
           <mat-card-actions style="display: flex; justify-content: center;" >
-            <button mat-button>Agregar</button>
+            <button mat-raised-button>Agregar</button>
           </mat-card-actions>
         </form>
         

@@ -7,14 +7,17 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import { Router, RouterLink } from '@angular/router';
 import { TomasService } from 'src/app/services/tomas.service';
 import { AgregarToma } from 'src/app/interfaces/tomas';
-import { IonItem, IonLabel, IonSpinner } from '@ionic/angular/standalone';
+import { IonItem, IonLabel, IonSpinner,IonHeader, IonToolbar, IonButtons,
+  IonTitle
+} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-agregar-tomas',
   templateUrl: './agregar-tomas.component.html',
   styleUrls: ['./agregar-tomas.component.scss'],
   imports: [MatCardModule, MatButtonModule, FormsModule, MatFormFieldModule, MatInputModule,
-    RouterLink, ReactiveFormsModule, IonItem, IonLabel, IonSpinner
+    RouterLink, ReactiveFormsModule, IonItem, IonLabel, IonSpinner,IonHeader,IonToolbar,
+    IonButtons, IonTitle
 
   ],
 
@@ -37,7 +40,11 @@ export class AgregarTomasComponent  implements OnInit {
 
   }
 
-  ngOnInit() {}
+  ngOnInit(
+    
+  ) {
+    console.log("juan manuel".length)
+  }
 
   agregarUsuario( form: AgregarToma ){
 
@@ -57,6 +64,9 @@ export class AgregarTomasComponent  implements OnInit {
     
   }
 
+  regresar(){
+    this.router.navigate(['/dashboard'])
+  }
 
 
 

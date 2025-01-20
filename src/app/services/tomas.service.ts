@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AgregarToma, Login, ResponseLogin, Tomas } from '../interfaces/tomas';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,8 @@ export class TomasService {
   private url: string;
   private appUrl: string;
   private apiUrl : string;
+  private urlRecibo: string;
+
   constructor( 
     private http :HttpClient
   ) {
@@ -18,7 +20,7 @@ export class TomasService {
     this.url = 'https://portalweb.sapalapaz.gob.mx/api/mobile/token';
     this.appUrl = 'https://portalweb.sapalapaz.gob.mx/';
     this.apiUrl = 'api/tomas';
-
+    this.urlRecibo = 'https://portalweb.sapalapaz.gob.mx/api/recibo';
   }
 
   loginByEmail(form:Login):Observable<ResponseLogin>{
@@ -103,6 +105,18 @@ export class TomasService {
     return this.http.get< any[] >( (this.appUrl + this.apiUrl + '/' + id), options );
   }
 
+  getRecibos(id: string, mes:number): Observable<Blob> {
+    const token = window.localStorage.getItem('token');
+  
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+  
+    return this.http.get(`${this.urlRecibo}/${id}/${mes}`, {
+      headers: headers,
+      responseType: 'blob' // This ensures the response is treated as a binary Blob
+    });
+  }
 
 
 }

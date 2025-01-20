@@ -6,15 +6,19 @@ import {MatCardModule} from '@angular/material/card';
 import { VerMas } from 'src/app/interfaces/tomas';
 import {MatListModule} from '@angular/material/list';
 import { IonItem, IonLabel, IonList, IonSpinner,IonHeader, IonToolbar, IonButtons,
-  IonMenuButton, IonTitle
+  IonMenuButton, IonTitle, IonFooter
 } from '@ionic/angular/standalone';
+import { Directory, Encoding, Filesystem } from '@capacitor/filesystem';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-ver-mas',
   templateUrl: './ver-mas.component.html',
   styleUrls: ['./ver-mas.component.scss'],
-  imports: [MatCardModule, MatButtonModule, MatListModule, RouterLink, IonItem, IonLabel, 
-    IonList, IonSpinner, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle],
+  imports: [MatCardModule, MatButtonModule, MatListModule,  IonItem, IonLabel, 
+    IonList, IonSpinner, IonHeader, IonToolbar, IonButtons,  IonTitle,
+    IonFooter
+  ],
 
 })
 export class VerMasComponent  implements OnInit {
@@ -31,12 +35,16 @@ export class VerMasComponent  implements OnInit {
     nombre: '',
   };
   loader: boolean = false;
+  meses: { mes: string, valor: number }[] = [];
+  ruta_recibo:string = ''
 
 
   constructor(
     private aRoute: ActivatedRoute,
     private tomasService: TomasService,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationService
+
   ) { 
 
     this.idToma = Number(this.aRoute.snapshot.paramMap.get('id'))
@@ -44,7 +52,9 @@ export class VerMasComponent  implements OnInit {
   }
 
   ngOnInit() {
-    console.log( this.aRoute.snapshot.paramMap.get('id') )
+    this.meses = this.generateMonths()
+    console.log( this.meses)
+
     this.loader = true
     this.tomasService.getMasTomas( this.idToma ).subscribe((data)=>{
 
@@ -66,5 +76,46 @@ export class VerMasComponent  implements OnInit {
     this.router.navigate(['/dashboard'])
   }
 
+  async downloadRecibo(id: string, valor: number): Promise<void> {
+    this.tomasService.getRecibos(id, valor).subscribe(async (data: Blob) => {
+      const reader = new FileReader();
+      reader.onload = async () => {
+        const base64data = reader.result as string;
+
+        try {
+          const result = await Filesystem.writeFile({
+            path: `recibo_${id}_${valor}.pdf`,
+            data: base64data.split(',')[1], // Remove the prefix from the base64 string
+            directory: Directory.Documents
+          });
+
+          console.log('File saved at:', result.uri);
+          this.ruta_recibo = Directory.Documents
+          // Mostrar mensaje de éxito
+          this.notificationService.presentToast( `Archivo guardado con éxito ${this.ruta_recibo}` );
+
+        } catch (error) {
+          console.error('Error saving file', error);
+        }
+      };
+
+      reader.readAsDataURL(data);
+    }, error => {
+      console.error('Error downloading the recibo', error);
+    });
+  }
+
+  generateMonths(): { mes: string, valor: number }[] {
+    const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    const currentMonth = new Date().getMonth();
+    const months = [];
+
+    for (let i = 0; i < 6; i++) {
+      const monthIndex = (currentMonth - i + 12) % 12;
+      months.push({ mes: monthNames[monthIndex], valor: i });
+    }
+
+    return months;
+  }
 
 }

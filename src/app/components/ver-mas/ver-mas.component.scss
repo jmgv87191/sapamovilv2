@@ -38,3 +38,51 @@
     align-items: center;
     background-color: rgb(222, 230, 217);
 }
+
+
+
+.btn-recibo{
+    width: 100%;
+    padding: 10px 0; 
+    background-color: #00846a;
+    color: white;
+    font-size: 20px;
+    &:hover{
+      background-color: #005e4b;
+  
+    }
+  }
+  
+  .cont_meses{
+    border: 1px solid black;
+    width: auto;
+    display: flex;
+    height: 30%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #00846a;
+  }
+  
+  .cont_meses_btn{
+    width: 30%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .btn_meses{
+    background-color: #005a48;
+    margin: 20px;
+    width: 100%;
+    height: 100%;
+    color: white;
+    border-radius: 5px;
+    &:hover{
+      background-color: #898b8b;
+  
+    }
+  }
+  
