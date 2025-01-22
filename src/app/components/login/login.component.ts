@@ -53,7 +53,7 @@ export class LoginComponent  implements OnInit {
         let dataResponse: ResponseLogin = data;
 
         if (dataResponse.token) {
-          localStorage.setItem("token",dataResponse.token )
+          sessionStorage.setItem("token",dataResponse.token )
           this.router.navigate(['dashboard'])
           this.form.reset()
         } else {

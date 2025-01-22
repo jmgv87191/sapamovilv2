@@ -23,6 +23,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { IonItem, IonLabel, IonSpinner } from '@ionic/angular/standalone';
 import { filter } from 'rxjs/operators';
+import { Platform } from '@ionic/angular';
 
 
 
@@ -49,13 +50,18 @@ export class DashboardComponent  implements OnInit {
 
   constructor( 
     private router: Router,
-    private tomasService: TomasService
+    private tomasService: TomasService,
+    private platform: Platform
   ) { 
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
         this.getProducts();
-      });  }
+      });  
+    
+      this.initializeApp();
+
+    }
 
   ngOnInit() {
 
@@ -76,7 +82,7 @@ export class DashboardComponent  implements OnInit {
 
 
   logout(){
-    localStorage.clear();
+    sessionStorage.clear();
     this.router.navigate(['login'])
   }
 
@@ -114,5 +120,21 @@ export class DashboardComponent  implements OnInit {
   onClick4(){
     this.router.navigate(['quejas-fugas'])
   }
+
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      document.addEventListener('pause', () => {
+        console.log('App en segundo plano: limpiando sessionStorage');
+        sessionStorage.clear();
+      });
+
+      document.addEventListener('resume', () => {
+        console.log('App activa nuevamente');
+      });
+    });
+  }
+
+
 }
 

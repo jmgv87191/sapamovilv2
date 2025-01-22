@@ -32,7 +32,7 @@ export class TomasService {
 
   getTomas():Observable<Tomas[]>{
 
-    let token = localStorage.getItem('token')
+    let token = sessionStorage.getItem('token')
 
     const options = {
       method: 'GET',
@@ -47,7 +47,7 @@ export class TomasService {
 
   deleteToma( id:number ):Observable<void>{
 
-    let token = localStorage.getItem('token')
+    let token = sessionStorage.getItem('token')
 
     const options ={
       method:'GET',
@@ -61,7 +61,7 @@ export class TomasService {
 
   agregarUsuario( form: AgregarToma  ):Observable<void>{
 
-    let token = localStorage.getItem('token')
+    let token = sessionStorage.getItem('token')
 
     const options = {
       method:'GET',
@@ -76,7 +76,7 @@ export class TomasService {
 
   verMas( claveUsuario:number ):Observable<any>{
 
-    let token = localStorage.getItem('token')
+    let token = sessionStorage.getItem('token')
 
     const options = {
       method: 'GET',
@@ -93,7 +93,7 @@ export class TomasService {
 
   getMasTomas( id:number ):Observable< any >{
 
-    let miStorage = window.localStorage['token'];
+    let miStorage = window.sessionStorage['token'];
 
     const options = {
       method: 'GET',
@@ -117,6 +117,19 @@ export class TomasService {
       responseType: 'blob' // This ensures the response is treated as a binary Blob
     });
   }
+/* 
+  getRecibos(id: string, mes:number): Observable<Blob> {
+    const token = window.sessionStorage.getItem('token');
+  
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+  
+    return this.http.get(`${this.urlRecibo}/${id}/${mes}`, {
+      headers: headers,
+      responseType: 'blob'
+    });
+  } */
 
 
 }

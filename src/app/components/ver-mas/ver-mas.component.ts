@@ -76,6 +76,7 @@ export class VerMasComponent  implements OnInit {
     this.router.navigate(['/dashboard'])
   }
 
+  
   async downloadRecibo(id: string, valor: number): Promise<void> {
     this.tomasService.getRecibos(id, valor).subscribe(async (data: Blob) => {
       const reader = new FileReader();
@@ -104,6 +105,7 @@ export class VerMasComponent  implements OnInit {
       console.error('Error downloading the recibo', error);
     });
   }
+  
 
   generateMonths(): { mes: string, valor: number }[] {
     const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
