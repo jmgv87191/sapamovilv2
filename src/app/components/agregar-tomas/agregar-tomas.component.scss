@@ -34,3 +34,37 @@ ion-toolbaR{
     --background: #00846a;
 
 }
+
+.cont_msj_error{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.error_card{
+    width: 80%;
+    background: #00846a;
+    padding: 40px;
+    color: white;
+    font-weight: 500;
+    font-size: 23px;
+}
+
+.btn_error{
+    display: flex;
+    justify-content: center;
+    background-color:#80b1a7 ;
+    border: none;
+    color: white;
+    font-size: 25px;
+    
+}
+
+.cont_btns{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    
+}

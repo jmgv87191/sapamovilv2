@@ -18,43 +18,101 @@
   </ion-toolbar>
 </ion-header>
 
+
+
 @if (loader) {
   <div class="cont_loader">
     <ion-spinner name="circles" style="width: 100px; height: 100px;" color="success"></ion-spinner>
   </div>
 }@else {
-  <div class="cont_agregarToma">
+
+  @if (mensaje_error) {
+    <div class="cont_msj_error">
+  
+
+      <mat-card class="error_card" appearance="outlined">
+
+        <mat-card-content style="text-align: center;  padding: 0;" > {{ errorMessageVariable }} </mat-card-content>
+
+        <div class="cont_btns">
+          <button (click)="regresar()" mat-raised-button>Aceptar</button>
+
+        </div>
+
+      </mat-card>
+  
+    </div>
+  }@else {
+
+    <div class="cont_agregarToma">
+      
+      <mat-card class="example-card" appearance="outlined">
     
-    <mat-card class="example-card" appearance="outlined">
-  
-      <mat-card-header class="agregarToma_header" >
-        <mat-card-title>Agregar toma</mat-card-title>
-      </mat-card-header>
-  
-      <mat-card-content  >
-  
-        <form class="example-form" [formGroup]="form" (ngSubmit)="agregarUsuario( form.value)" >
+        <mat-card-header class="agregarToma_header" >
+          <mat-card-title>Agregar toma</mat-card-title>
+        </mat-card-header>
+    
+        <mat-card-content  >
+    
+          <form class="example-form" [formGroup]="form" (ngSubmit)="agregarUsuario( form.value)" >
+            
+            <mat-form-field class="example-full-width">
+              <mat-label>Clave de usuario</mat-label>
+              <input formControlName="cveusu" type="number" matInput placeholder="11111111" >
+            </mat-form-field>
+
+              @if (form.controls['cveusu'].getError('required')&& form.controls['cveusu'].touched  ) {
+              <span>Es obligatorio ingresar una clave de usario</span>
+            }
           
-          <mat-form-field class="example-full-width">
-            <mat-label>Clave de usuario</mat-label>
-            <input formControlName="cveusu" type="number" matInput placeholder="11111111" >
-          </mat-form-field>
-  
-          <mat-form-field class="example-full-width">
-            <mat-label>Alias</mat-label>
-            <input formControlName="alias"  matInput placeholder="OOMSAPAS" >
-          </mat-form-field>
-        
-          <mat-card-actions style="display: flex; justify-content: center;" >
-            <button mat-raised-button>Agregar</button>
-          </mat-card-actions>
-        </form>
-        
-      </mat-card-content>
-  
-    </mat-card>
-  
-  </div>
+            @if (form.controls['cveusu'].getError('pattern')&& form.controls['cveusu'].touched  ) {
+              <span>La clave de usuario es de 8 digitos</span>
+            }
+    
+            <mat-form-field class="example-full-width">
+              <mat-label>Alias</mat-label>
+              <input formControlName="alias"  matInput placeholder="OOMSAPAS" >
+            </mat-form-field>
+
+                          @if (form.controls['alias'].getError('required')&& form.controls['alias'].touched  ) {
+                <span>"Alias" es un campo obligario</span>
+              }
+            
+              @if (form.controls['alias'].getError('minlength')&& form.controls['alias'].touched  ) {
+                <span>El alias debe tener al menos 3 caracteres</span>
+              }
+            
+              @if (form.controls['alias'].getError('maxlength')&& form.controls['alias'].touched  ) {
+                <span>Su alias no puede tener mas de 15 caracteres</span>
+              }
+          
+            <mat-card-actions style="display: flex; justify-content: center;" >
+              <button [disabled]="form.invalid" mat-raised-button>Agregar</button>
+            </mat-card-actions>
+          </form>
+          
+        </mat-card-content>
+    
+      </mat-card>
+    
+    </div>
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

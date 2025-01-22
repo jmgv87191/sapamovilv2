@@ -10,6 +10,7 @@ import { AgregarToma } from 'src/app/interfaces/tomas';
 import { IonItem, IonLabel, IonSpinner,IonHeader, IonToolbar, IonButtons,
   IonTitle
 } from '@ionic/angular/standalone';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-agregar-tomas',
@@ -26,6 +27,8 @@ export class AgregarTomasComponent  implements OnInit {
   
   form:FormGroup;
   loader: boolean = false;
+  mensaje_error: boolean = false;
+  errorMessageVariable: string = '';
 
   constructor(  
     private fb: FormBuilder,
@@ -34,8 +37,8 @@ export class AgregarTomasComponent  implements OnInit {
   ) {
 
     this.form = this.fb.group({
-      cveusu:'17110195',
-      alias:'asdasd'
+      cveusu: ['', [Validators.required, Validators.pattern(/^\d{8}$/)]],
+      alias:['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]]
     })
 
   }
@@ -44,8 +47,10 @@ export class AgregarTomasComponent  implements OnInit {
     
   ) {
     console.log("juan manuel".length)
+    this.form.reset();
   }
 
+  
   agregarUsuario( form: AgregarToma ){
 
     const toma: AgregarToma ={
@@ -54,18 +59,40 @@ export class AgregarTomasComponent  implements OnInit {
     }
 
     this.loader = true;
+    this.form.reset();
 
     console.log('toma',toma)
     this.tomasService.agregarUsuario( toma ).subscribe(()=>{
       console.log('agregado')
       this.loader = false;
       this.router.navigate(['dashboard'])
-    })
+    },
+    (error: HttpErrorResponse) => {
+      if (error.status === 403) {
+        this.errorMessageVariable = 'La clave ya fue registrada por un usuario';
+        console.log(this.errorMessageVariable);
+        this.mensaje_error = true;
+
+        
+      } 
+      if (error.status === 400) {
+        this.errorMessageVariable = 'Clave de usuario incorrecta';
+        console.log(this.errorMessageVariable);
+        this.mensaje_error = true;
+
+        
+      } 
+
+      this.loader = false;
+    }
+  )
     
   }
 
   regresar(){
     this.router.navigate(['/dashboard'])
+    this.mensaje_error = false;
+    this.form.reset();
   }
 
 
