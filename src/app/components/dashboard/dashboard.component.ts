@@ -56,11 +56,9 @@ export class DashboardComponent  implements OnInit {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.getProducts();
-      });  
-    
-      this.initializeApp();
+        this.getProducts()
 
+      });  
     }
 
   ngOnInit() {
@@ -69,23 +67,23 @@ export class DashboardComponent  implements OnInit {
 
   }
 
-  getProducts(){
-
-    this.loader = true
-
-    this.tomasService.getTomas().subscribe((data)=>{
-      this.tomasRegistradas = data
+  getProducts() {
+    this.loader = true;
+  
+    this.tomasService.getTomas().subscribe((data) => {
+      this.tomasRegistradas = data;
       this.dataSource.data = this.tomasRegistradas;
-      this.loader = false
-    })
+  
+      // Reasigna el paginator cada vez que los datos se actualizan
+      this.dataSource.paginator = this.paginator;
+      this.loader = false;
+    });
   }
-
-
+  
   logout(){
     sessionStorage.clear();
     this.router.navigate(['login'])
   }
-
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -122,18 +120,6 @@ export class DashboardComponent  implements OnInit {
   }
 
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      document.addEventListener('pause', () => {
-        console.log('App en segundo plano: limpiando sessionStorage');
-        sessionStorage.clear();
-      });
-
-      document.addEventListener('resume', () => {
-        console.log('App activa nuevamente');
-      });
-    });
-  }
 
 
 }

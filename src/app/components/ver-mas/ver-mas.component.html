@@ -73,13 +73,8 @@
         @for (item of meses ; track $index) {
           <div class="cont_meses_btn" >
             <button  (click)="downloadRecibo( masDatos.cveusu, item.valor)" 
-        class="btn_meses"  type="button" style="padding: 10px;">  {{ item.mes }} </button>
+        mat-fab extended>  {{ item.mes }} </button>
           </div> 
-
-<!--           <button  (click)="downloadRecibo( masDatos.cveusu, item.valor)"  mat-fab extended>
-            {{ item.mes }}
-          </button> -->
-
 
         }
 
@@ -88,14 +83,8 @@
   </div>
 
   <ion-footer>
-    <ion-toolbar>
-      <ion-title 
-        style="
-          display: flex; 
-          justify-content: center; 
-          align-items: center; 
-          height: 100%;"
-      >
+    <ion-toolbar >
+      <ion-title>
         <button 
           mat-raised-button 
           (click)="pagar()"

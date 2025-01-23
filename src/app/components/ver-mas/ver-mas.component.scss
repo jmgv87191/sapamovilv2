@@ -87,7 +87,21 @@
   }
   
   
-ion-toolbaR{
+ion-toolbar{
   --background: #00846a;
 
+}
+
+ion-footer{
+  ion-toolbar{
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ion-title{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }

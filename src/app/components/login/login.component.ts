@@ -37,8 +37,8 @@ export class LoginComponent  implements OnInit {
     private router: Router
   ) { 
     this.form = this.fb.group({
-      email:[ 'jmgv87191@gmail.com', [Validators.required, Validators.minLength(4)] ],
-      password:[ 'jmsa424s', Validators.required ],
+      email:[ '', [Validators.required, Validators.minLength(4)] ],
+      password:[ '', Validators.required ],
       device_name: ['toma1', Validators.required],
     })
 
@@ -55,7 +55,15 @@ export class LoginComponent  implements OnInit {
         if (dataResponse.token) {
           sessionStorage.setItem("token",dataResponse.token )
           this.router.navigate(['dashboard'])
-          this.form.reset()
+          // this.form.reset()
+
+          this.form.setValue({
+            email: '',
+            password: '',
+            device_name: 'toma1'
+          });
+          
+
         } else {
           this.errorStatus = true;
           this.errorMsj = "Error"
@@ -69,7 +77,7 @@ export class LoginComponent  implements OnInit {
             console.error('Usuario o contraseña incorrectos');
             this.errorMessageVariable = 'Usuario o contraseña incorrectossas ';
             console.log(this.errorMessageVariable)
-  
+            console.log(this)
             this.pantallaError = false
         
           
@@ -78,9 +86,6 @@ export class LoginComponent  implements OnInit {
           this.errorMessageVariable = 'Ocurrió un error Usuario o contraseña. Por favor, inténtalo de nuevo más tarde.';
         }
       }
-    
-    
-    
     )
 
   } 

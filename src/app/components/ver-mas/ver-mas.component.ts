@@ -78,8 +78,13 @@ export class VerMasComponent  implements OnInit {
 
   
   async downloadRecibo(id: string, valor: number): Promise<void> {
+
+    this.loader = true
+
     this.tomasService.getRecibos(id, valor).subscribe(async (data: Blob) => {
+
       const reader = new FileReader();
+
       reader.onload = async () => {
         const base64data = reader.result as string;
 
@@ -94,15 +99,20 @@ export class VerMasComponent  implements OnInit {
           this.ruta_recibo = Directory.Documents
           // Mostrar mensaje de éxito
           this.notificationService.presentToast( `Archivo guardado con éxito ${this.ruta_recibo}` );
+          this.loader = false
 
         } catch (error) {
           console.error('Error saving file', error);
+          this.loader = false
+
         }
       };
-
+      
       reader.readAsDataURL(data);
     }, error => {
       console.error('Error downloading the recibo', error);
+      this.loader = false
+
     });
   }
   
