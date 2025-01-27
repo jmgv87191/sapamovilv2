@@ -117,19 +117,7 @@ export class TomasService {
       responseType: 'blob' // This ensures the response is treated as a binary Blob
     });
   }
-/* 
-  getRecibos(id: string, mes:number): Observable<Blob> {
-    const token = window.sessionStorage.getItem('token');
-  
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-  
-    return this.http.get(`${this.urlRecibo}/${id}/${mes}`, {
-      headers: headers,
-      responseType: 'blob'
-    });
-  } */
+
 
 
 }
