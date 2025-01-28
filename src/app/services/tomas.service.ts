@@ -106,7 +106,7 @@ export class TomasService {
   }
 
   getRecibos(id: string, mes:number): Observable<Blob> {
-    const token = window.localStorage.getItem('token');
+    const token = window.sessionStorage.getItem('token');
   
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
