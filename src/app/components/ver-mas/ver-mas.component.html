@@ -69,14 +69,15 @@
     </div>
     
 
-    <div class="cont_meses" style="gap: 10px; padding: 10px; overflow: auto;">
+    <div class="cont_meses" style="gap: 5px 20px; padding: 10px; overflow: auto;">
         @for (item of meses ; track $index) {
           <div class="cont_meses_btn" >
-            <button style="padding: 0px 40px;"  (click)="downloadRecibo( masDatos.cveusu, item.valor)" 
+            <button style="padding: 10px 40px; "  (click)="downloadRecibo( masDatos.cveusu, item.valor)" 
               mat-fab extended>  {{ item.mes }} </button>
           </div> 
 
         }
+
 
     </div>
     
