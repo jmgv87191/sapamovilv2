@@ -92,7 +92,7 @@ export class VerMasComponent  implements OnInit {
           const result = await Filesystem.writeFile({
             path: `recibo_${id}_${valor}.pdf`,
             data: base64data.split(',')[1], // Remove the prefix from the base64 string
-            directory: Directory.Data
+            directory: Directory.Documents
           });
 
           console.log('File saved at:', result.uri);
