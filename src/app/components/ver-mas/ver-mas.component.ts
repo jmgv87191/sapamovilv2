@@ -37,7 +37,7 @@ export class VerMasComponent  implements OnInit {
   loader: boolean = false;
   meses: { mes: string, valor: number }[] = [];
   ruta_recibo:string = ''
-
+  popUp = false;
 
   constructor(
     private aRoute: ActivatedRoute,
@@ -98,8 +98,10 @@ export class VerMasComponent  implements OnInit {
           console.log('File saved at:', result.uri);
           this.ruta_recibo = Directory.Documents
           // Mostrar mensaje de éxito
-          this.notificationService.presentToast( `Archivo guardado con éxito ${this.ruta_recibo}` );
+          // this.notificationService.presentToast( `Archivo guardado con éxito ${this.ruta_recibo}` );
           this.loader = false
+          this.popUp = true
+
 
         } catch (error) {
           console.error('Error saving file', error);
@@ -133,4 +135,10 @@ export class VerMasComponent  implements OnInit {
   pagar() {
     window.location.href =  `https://portalweb.sapalapaz.gob.mx/sapapol/${this.masDatos.cveusu}` ;
   }
+
+
+  ocultar() {
+    this.popUp = false
+  }
+
 }
